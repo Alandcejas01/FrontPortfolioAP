@@ -1,1 +1,25 @@
-/* You can add global styles to this file, and also import other style files */
+html {
+  background-color: #121212;
+}
+
+body {
+  background-color: #121212;
+}
+
+footer {
+  margin: 0em;
+}
+
+label {
+  color: #fff;
+}
+
+input {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+
+.row {
+  margin: 0em;
+}

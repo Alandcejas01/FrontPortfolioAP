@@ -1,0 +1,24 @@
+<div class="row">
+  <h2 class="heading">Educacion</h2>
+  <div class="col-lg-2">
+    <button type="button" class="btn btn-dark"  routerLink="/nuevaedu" *ngIf="isLogged">
+      Agregar Educacion
+    </button>
+  </div>
+  <div>
+    <table class="table">
+      <tbody>
+        <tr *ngFor="let Educacion of educacion">
+            <td><h2>{{ Educacion.nombreEd }}</h2></td>
+            <td>{{ Educacion.descripcionEd }}</td>
+          <td class="buttonflex" *ngIf="isLogged">
+            <button class="btn btn-secondary" routerLink="/editedu/{{ Educacion.id }}">
+              <i class="bi bi-pencil-fill"></i> EDITAR </button>
+              <button class="btn btn-danger" (click)="delete(Educacion.id)">
+                <i class="bi bi-trash-fill"></i> BORRAR </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

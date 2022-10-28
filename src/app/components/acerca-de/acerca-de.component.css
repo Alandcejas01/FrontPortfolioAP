@@ -1,0 +1,48 @@
+*{
+  color: #fff
+}
+
+.flex-col-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.row {
+  padding: 20px;
+}
+div {
+  background-color: #121212;
+  text-align: center;
+}
+
+#nombre {
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.descripcion p {
+  color: #ffffffb3;
+}
+
+
+@media (min-width: 767px){
+  #foto-perfil {
+    border-radius: 100%;
+    box-shadow: 3px 3px 3px gray;
+  }
+  .descripcion {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+@media (max-width: 767px){
+  #foto-perfil {
+    width: 40%;
+    border-radius: 100%;
+    box-shadow: 3px 3px 3px gray;
+    margin: 15px;
+  }
+}
