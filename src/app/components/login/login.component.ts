@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { LoginUsuario } from 'src/app/model/login-usuario';
 import { AuthService } from 'src/app/service/auth.service';
 import { TokenService } from 'src/app/service/token.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -43,7 +44,11 @@ export class LoginComponent implements OnInit {
       this.isLogginFail = true;
       this.errMsj = err.error.mensaje;
       console.log(this.errMsj);
-      alert("Usuario o contraseña incorrectos");
+      Swal.fire({
+        icon: 'error',
+        title: 'Fallo al iniciar sesion',
+        text: 'Usuario o contraseña incorrectos',
+      })
     })
   }
 
