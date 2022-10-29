@@ -44,7 +44,7 @@ export class EditAcercaDeComponent implements OnInit {
 
   uploadImage($event:any){
     if($event.target.files[0] == null){
-      this.imagenCargada = false;
+      this.imageService.url = this.persona.img;
     } else {
       const id = this.activatedRouter.snapshot.params['id'];
       const name = "perfil_" + id;
