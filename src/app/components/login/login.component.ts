@@ -63,6 +63,8 @@ export class LoginComponent implements OnInit {
       this.errMsj = err.error.mensaje;
       console.log(this.errMsj);
       Swal.fire({
+        background: '#121212',
+        color: '#fff',
         icon: 'error',
         title: 'Fallo al iniciar sesion',
         text: 'Usuario o contraseña incorrectos',
