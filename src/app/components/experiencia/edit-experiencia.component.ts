@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Experiencia } from 'src/app/model/experiencia';
 import { SExperienciaService } from 'src/app/service/s-experiencia.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-edit-experiencia',
@@ -20,8 +21,17 @@ export class EditExperienciaComponent implements OnInit {
       data =>{
         this.expLab = data;
       }, err =>{
-        alert("Error al modificar experiencia");
-        this.router.navigate(['']);
+        Swal.fire({
+          background: '#121212',
+          color: '#fff',
+          icon: 'error',
+          title: 'Error al modificar experiencia',
+          showConfirmButton: false,
+          timer: 1500
+        })
+        setTimeout(() => {
+          this.router.navigate(['']);
+        }, 1550)
       }
     )
   }
@@ -30,10 +40,30 @@ export class EditExperienciaComponent implements OnInit {
     const id = this.activatedRouter.snapshot.params['id'];
     this.sExperiencia.update(id, this.expLab).subscribe(
       data => {
-        this.router.navigate(['']);
+        Swal.fire({
+          background: '#121212',
+          color: '#fff',
+          position: 'center',
+          icon: 'success',
+          title: 'Cambios Guardados',
+          showConfirmButton: false,
+          timer: 1500
+        })
+        setTimeout(() => {
+          this.router.navigate(['']);
+        }, 1550)
       }, err =>{
-         alert("Error al modificar experiencia");
-         this.router.navigate(['']);
+        Swal.fire({
+          background: '#121212',
+          color: '#fff',
+          icon: 'error',
+          title: 'Error al modificar experiencia',
+          showConfirmButton: false,
+          timer: 1500
+        })
+        setTimeout(() => {
+          this.router.navigate(['']);
+        }, 1550)
       }
     )
   }

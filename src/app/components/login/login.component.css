@@ -1,3 +1,9 @@
-label {
-  color: #000;
+.card {
+  background-color: #121212;
+  border-color: #121212;
 }
+
+label, h3 {
+  color: #fff;
+}
+

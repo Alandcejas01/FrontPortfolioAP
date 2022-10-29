@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Experiencia } from 'src/app/model/experiencia';
 import { SExperienciaService } from 'src/app/service/s-experiencia.service';
 import { TokenService } from 'src/app/service/token.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-experiencia',
@@ -29,15 +30,59 @@ export class ExperienciaComponent implements OnInit {
   }
 
   delete(id?: number){
-    if(id != undefined){
-      this.sExperiencia.delete(id).subscribe(
-        data => {
-          this.cargarExperiencia();
-        }, err => {
-          alert("No se pudo borrar la experiencia");
+    const swalWithBootstrapButtons = Swal.mixin({
+      background: '#121212',
+      color: '#fff',
+      customClass: {
+        confirmButton: 'btn btn-success',
+        cancelButton: 'btn btn-danger'
+      },
+      buttonsStyling: false
+    })
+
+    swalWithBootstrapButtons.fire({
+      background: '#121212',
+      color: '#fff',
+      title: '¿Estas seguro que quieres eliminar la experiencia?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Si, borrar',
+      cancelButtonText: 'No, cancelar!',
+      reverseButtons: true
+    }).then((result) => {
+      if (result.isConfirmed) {
+        swalWithBootstrapButtons.fire(
+          'Borrado!',
+          'La experiencia fue borrada.',
+          'success'
+        )
+        if(id != undefined){
+          this.sExperiencia.delete(id).subscribe(
+            data => {
+              this.cargarExperiencia();
+            }, err => {
+              Swal.fire({
+                background: '#121212',
+                color: '#fff',
+                icon: 'error',
+                title: 'Error al borrar la experiencia',
+                showConfirmButton: true,
+                timer: 1500
+              })
+            }
+          )
         }
-      )
-    }
+      } else if (
+        /* Read more about handling dismissals below */
+        result.dismiss === Swal.DismissReason.cancel
+      ) {
+        swalWithBootstrapButtons.fire(
+          'Cancelado',
+          'La experiencia no fue borrada',
+          'error'
+        )
+      }
+    })
   }
 }
 

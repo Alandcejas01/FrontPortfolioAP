@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { persona } from 'src/app/model/persona.model';
 import { ImageService } from 'src/app/service/image.service';
 import { PersonaService } from 'src/app/service/persona.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-edit-acerca-de',
@@ -21,8 +22,15 @@ export class EditAcercaDeComponent implements OnInit {
       data => {
         this.persona = data;
       }, err => {
-        alert("Error al modificar");
-        this.router.navigate(['']);
+        Swal.fire({
+          icon: 'error',
+          title: 'Error al modificar persona',
+          showConfirmButton: false,
+          timer: 1500
+        })
+        setTimeout(() => {
+          this.router.navigate(['']);
+        }, 1550)
       }
     )
   }
@@ -34,10 +42,30 @@ export class EditAcercaDeComponent implements OnInit {
     }
     this.personaService.update(id, this.persona).subscribe(
       data => {
-        this.router.navigate(['']);
+        Swal.fire({
+          background: '#121212',
+          color: '#fff',
+          position: 'center',
+          icon: 'success',
+          title: 'Cambios Guardados',
+          showConfirmButton: false,
+          timer: 1500
+        })
+        setTimeout(() => {
+          this.router.navigate(['']);
+        }, 1550)
       }, err => {
-        alert("Error al modificar la persona");
-        this.router.navigate(['']);
+        Swal.fire({
+          background: '#121212',
+          color: '#fff',
+          icon: 'error',
+          title: 'Error al modificar persona',
+          showConfirmButton: false,
+          timer: 1500
+        })
+        setTimeout(() => {
+          this.router.navigate(['']);
+        }, 1550)
       }
     )
   }

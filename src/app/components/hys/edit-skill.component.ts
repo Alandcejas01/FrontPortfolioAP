@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Skill } from 'src/app/model/skill';
 import { SkillService } from 'src/app/service/skill.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-edit-skill',
@@ -19,8 +20,17 @@ export class EditSkillComponent implements OnInit {
       data => {
         this.skill = data;
       }, err => {
-        alert("Error al modificar");
-        this.router.navigate(['']);
+        Swal.fire({
+          background: '#121212',
+          color: '#fff',
+          icon: 'error',
+          title: 'Error al modificar la skill',
+          showConfirmButton: false,
+          timer: 1500
+        })
+        setTimeout(() => {
+          this.router.navigate(['']);
+        }, 1550)
       }
     )
   }
@@ -30,10 +40,30 @@ export class EditSkillComponent implements OnInit {
     const id = this.activatedRouter.snapshot.params['id'];
     this.skillS.update(id, this.skill).subscribe(
       data => {
-        this.router.navigate(['']);
+        Swal.fire({
+          background: '#121212',
+          color: '#fff',
+          position: 'center',
+          icon: 'success',
+          title: 'Cambios Guardados',
+          showConfirmButton: false,
+          timer: 1500
+        })
+        setTimeout(() => {
+          this.router.navigate(['']);
+        }, 1550)
       }, err => {
-        alert("Error al modificar la skill");
-        this.router.navigate(['']);
+        Swal.fire({
+          background: '#121212',
+          color: '#fff',
+          icon: 'error',
+          title: 'Error al modificar la skill',
+          showConfirmButton: false,
+          timer: 1500
+        })
+        setTimeout(() => {
+          this.router.navigate(['']);
+        }, 1550)
       }
     )
   }

@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Proyecto } from 'src/app/model/proyecto';
 import { ImageProyectoService } from 'src/app/service/image-proyecto.service';
 import { ProyectoService } from 'src/app/service/proyecto.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-edit-proyectos',
@@ -22,8 +23,17 @@ export class EditProyectosComponent implements OnInit {
       data => {
         this.proyecto = data;
       }, err => {
-        alert("Error al modificar");
-        this.router.navigate(['']);
+        Swal.fire({
+          background: '#121212',
+          color: '#fff',
+          icon: 'error',
+          title: 'Error al modificar experiencia',
+          showConfirmButton: false,
+          timer: 1500
+        })
+        setTimeout(() => {
+          this.router.navigate(['']);
+        }, 1550)
       }
     )
   }
@@ -35,10 +45,30 @@ export class EditProyectosComponent implements OnInit {
     }
     this.proyectoService.update(id, this.proyecto).subscribe(
       data => {
-        this.router.navigate(['']);
+        Swal.fire({
+          background: '#121212',
+          color: '#fff',
+          position: 'center',
+          icon: 'success',
+          title: 'Cambios Guardados',
+          showConfirmButton: false,
+          timer: 1500
+        })
+        setTimeout(() => {
+          this.router.navigate(['']);
+        }, 1550)
       }, err => {
-        alert("Error al modificar el proyecto");
-        this.router.navigate(['']);
+        Swal.fire({
+          background: '#121212',
+          color: '#fff',
+          icon: 'error',
+          title: 'Error al modificar proyecto',
+          showConfirmButton: false,
+          timer: 1500
+        })
+        setTimeout(() => {
+          this.router.navigate(['']);
+        }, 1550)
       }
     )
   }

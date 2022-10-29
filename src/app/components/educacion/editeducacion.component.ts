@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Educacion } from 'src/app/model/educacion';
 import { EducacionService } from 'src/app/service/educacion.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-editeducacion',
@@ -19,8 +20,15 @@ export class EditeducacionComponent implements OnInit {
       data => {
         this.educacion = data;
       }, err => {
-        alert("Error al modificar la educación");
-        this.router.navigate(['']);
+        Swal.fire({
+          icon: 'error',
+          title: 'Error al modificar educación',
+          showConfirmButton: false,
+          timer: 1500
+        })
+        setTimeout(() => {
+          this.router.navigate(['']);
+        }, 1550)
       }
     )
   }
@@ -29,10 +37,30 @@ export class EditeducacionComponent implements OnInit {
     const id = this.activatedRouter.snapshot.params['id'];
     this.educacionS.update(id, this.educacion).subscribe(
       data => {
-        this.router.navigate(['']);
+        Swal.fire({
+          background: '#121212',
+          color: '#fff',
+          position: 'center',
+          icon: 'success',
+          title: 'Cambios Guardados',
+          showConfirmButton: false,
+          timer: 1500
+        })
+        setTimeout(() => {
+          this.router.navigate(['']);
+        }, 1550)
       }, err => {
-        alert("Error al modificar la educación");
-        this.router.navigate(['']);
+        Swal.fire({
+          background: '#121212',
+          color: '#fff',
+          icon: 'error',
+          title: 'Error al modificar educación',
+          showConfirmButton: false,
+          timer: 1500
+        })
+        setTimeout(() => {
+          this.router.navigate(['']);
+        }, 1550)
       }
     )
   }

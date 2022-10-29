@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Proyecto } from 'src/app/model/proyecto';
 import { ImageProyectoService } from 'src/app/service/image-proyecto.service';
 import { ProyectoService } from 'src/app/service/proyecto.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-new-proyectos',
@@ -23,11 +24,30 @@ export class NewProyectosComponent implements OnInit {
     const proyecto = new Proyecto(this.nombre, this.descripcion, this.img = this.imagePService.url);
     this.proyectoService.save(proyecto).subscribe(
       data => {
-        alert("Proyecto creado correctamente");
-        this.router.navigate(['']);
+        Swal.fire({
+          background: '#121212',
+          color: '#fff',
+          position: 'center',
+          icon: 'success',
+          title: 'Proyecto añadido correctamente',
+          showConfirmButton: false,
+          timer: 1500
+        })
+        setTimeout(() => {
+          this.router.navigate(['']);
+        }, 1550)
       }, err => {
-        alert("Falló al añadir el proyecto");
-        this.router.navigate(['']);
+        Swal.fire({
+          background: '#121212',
+          color: '#fff',
+          icon: 'error',
+          title: 'Error al crear proyecto',
+          showConfirmButton: false,
+          timer: 1500
+        })
+        setTimeout(() => {
+          this.router.navigate(['']);
+        }, 1550)
       }
     )
   }

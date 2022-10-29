@@ -6,6 +6,10 @@ body {
   background-color: #121212;
 }
 
+button {
+  margin: 10px;
+}
+
 footer {
   margin: 0em;
 }
