@@ -16,7 +16,7 @@ export class EditProyectosComponent implements OnInit {
   constructor(private proyectoService: ProyectoService,private activatedRouter: ActivatedRoute, private router: Router, public imagePService: ImageProyectoService) { }
 
 
-  ngOnInit(): void {
+  ngOnInit(): void {   /** spinner starts on init */
     this.imagePService.url = "";
     const id = this.activatedRouter.snapshot.params['id'];
     this.proyectoService.detail(id).subscribe(

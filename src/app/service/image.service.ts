@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Storage, ref, uploadBytes, list, getDownloadURL } from '@angular/fire/storage';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Injectable({
   providedIn: 'root'
@@ -7,9 +8,10 @@ import { Storage, ref, uploadBytes, list, getDownloadURL } from '@angular/fire/s
 export class ImageService {
   url: string = "";
   imgRef: string = ""
-  constructor(private storage: Storage) { }
+  constructor(private storage: Storage, private spinner: NgxSpinnerService) { }
 
   public uploadImage($event: any, name: string){
+    this.spinner.show();
     const file = $event.target.files[0]
     const imgRef = ref(this.storage, `imagen/`+ name)
     uploadBytes(imgRef, file)
@@ -25,6 +27,7 @@ export class ImageService {
       for(let item of response.items){
         if(this.imgRef == item.fullPath){
         this.url = await getDownloadURL(item);
+        this.spinner.hide();
         console.log("La url es: " + this.url);
         }
       }

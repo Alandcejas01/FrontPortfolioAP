@@ -30,6 +30,8 @@ import { environment } from '../environments/environment';
 import { provideStorage,getStorage } from '@angular/fire/storage';
 import { EditProyectosComponent } from './components/proyectos/edit-proyectos.component';
 import { NewProyectosComponent } from './components/proyectos/new-proyectos.component';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { NgxSpinnerModule } from "ngx-spinner";
 
 
 @NgModule({
@@ -54,7 +56,7 @@ import { NewProyectosComponent } from './components/proyectos/new-proyectos.comp
     NewSkillComponent,
     EditAcercaDeComponent,
     EditProyectosComponent,
-    NewProyectosComponent
+    NewProyectosComponent,
   ],
   imports: [
     BrowserModule,
@@ -64,6 +66,8 @@ import { NewProyectosComponent } from './components/proyectos/new-proyectos.comp
     HttpClientModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideStorage(() => getStorage()),
+    BrowserAnimationsModule,
+    NgxSpinnerModule,
   ],
   providers: [
     interceptorProvider
