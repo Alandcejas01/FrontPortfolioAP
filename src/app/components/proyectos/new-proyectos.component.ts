@@ -14,6 +14,7 @@ export class NewProyectosComponent implements OnInit {
   nombre: string;
   descripcion: string;
   img: string;
+  fscreenspinner: boolean = false;
   constructor(private proyectoService: ProyectoService, private router: Router, public imagePService: ImageProyectoService) { }
 
   ngOnInit(): void {
@@ -55,7 +56,7 @@ export class NewProyectosComponent implements OnInit {
   uploadImg($event:any){
     const name = "proyecto_" + this.nombre;
     this.imagePService.uploadImage($event, name);
-
+    this.fscreenspinner = true;
   }
 
 }
