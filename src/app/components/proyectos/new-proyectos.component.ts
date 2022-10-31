@@ -14,7 +14,7 @@ export class NewProyectosComponent implements OnInit {
   nombre: string;
   descripcion: string;
   img: string;
-  fscreenspinner = false;
+  fscreenspinner: boolean = false;
   constructor(private proyectoService: ProyectoService, private router: Router, public imagePService: ImageProyectoService) { }
 
   ngOnInit(): void {
@@ -22,7 +22,6 @@ export class NewProyectosComponent implements OnInit {
   }
 
   onCreate(): void{
-    this.fscreenspinner = true;
     const proyecto = new Proyecto(this.nombre, this.descripcion, this.img = this.imagePService.url);
     this.proyectoService.save(proyecto).subscribe(
       data => {

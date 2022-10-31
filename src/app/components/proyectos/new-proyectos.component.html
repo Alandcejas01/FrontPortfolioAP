@@ -12,7 +12,7 @@
         </div>
         <div class="form-group">
           <label for="img">Ingrese la url de la img</label>
-          <input type="file" class="form-control" id="img" name="img" (click)="this.imagePService.url = ''" (change)="uploadImg($event)" accept=".jpg, .jpeg, .png" required>
+          <input type="file" class="form-control" id="img" name="img" (click)="this.imagePService.url = ''" (change)="uploadImg($event)" (change)="this.fscreenspinner = true"accept=".jpg, .jpeg, .png" required>
         </div>
         <div class="imagen">
           <ngx-spinner [fullScreen]="this.fscreenspinner" size="medium" type="pacman" color="#edb948" >
