@@ -22,6 +22,7 @@ export class NewProyectosComponent implements OnInit {
   }
 
   onCreate(): void{
+    this.fscreenspinner = true;
     const proyecto = new Proyecto(this.nombre, this.descripcion, this.img = this.imagePService.url);
     this.proyectoService.save(proyecto).subscribe(
       data => {
@@ -56,7 +57,6 @@ export class NewProyectosComponent implements OnInit {
   uploadImg($event:any){
     const name = "proyecto_" + this.nombre;
     this.imagePService.uploadImage($event, name);
-    this.fscreenspinner = true;
   }
 
 }
