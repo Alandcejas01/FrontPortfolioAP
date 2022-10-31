@@ -14,7 +14,7 @@ export class NewProyectosComponent implements OnInit {
   nombre: string;
   descripcion: string;
   img: string;
-  fscreenspinner: boolean = false;
+  fscreenspinner = false;
   constructor(private proyectoService: ProyectoService, private router: Router, public imagePService: ImageProyectoService) { }
 
   ngOnInit(): void {
