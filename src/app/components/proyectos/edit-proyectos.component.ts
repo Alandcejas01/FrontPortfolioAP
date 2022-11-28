@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { Proyecto } from 'src/app/model/proyecto';
 import { ImageProyectoService } from 'src/app/service/image-proyecto.service';
 import { ProyectoService } from 'src/app/service/proyecto.service';
@@ -13,7 +14,7 @@ import Swal from 'sweetalert2';
 export class EditProyectosComponent implements OnInit {
   proyecto: Proyecto = null;
   imagenCargada: boolean = false;
-  constructor(private proyectoService: ProyectoService,private activatedRouter: ActivatedRoute, private router: Router, public imagePService: ImageProyectoService) { }
+  constructor(private proyectoService: ProyectoService,private activatedRouter: ActivatedRoute, private router: Router, public imagePService: ImageProyectoService, private spinner: NgxSpinnerService) { }
 
 
   ngOnInit(): void {   /** spinner starts on init */
@@ -81,5 +82,12 @@ export class EditProyectosComponent implements OnInit {
       const name = "proyecto_" + this.proyecto.nombre;
       this.imagePService.uploadImage($event, name);
     }
+  }
+
+  cargarSpinner(){
+    this.spinner.show();
+    setTimeout(() => {
+      this.spinner.hide();
+    }, 2000);
   }
 }

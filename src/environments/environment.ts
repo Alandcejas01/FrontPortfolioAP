@@ -16,8 +16,8 @@ export const environment = {
   production: false,
 
   //URL: 'http://localhost:8080/',
-  URL: 'https://backendportfolioapalancejas.herokuapp.com/',
-
+  //URL: 'https://backendportfolioapalancejas.herokuapp.com/',
+  URL: 'https://backendportfoliocejasalan.up.railway.app/',
 };
 
 /*
