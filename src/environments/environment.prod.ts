@@ -11,6 +11,5 @@ export const environment = {
   },
   production: true,
 
-  //URL: 'https://backendportfolioapalancejas.herokuapp.com/',
-  URL: 'https://backendportfoliocejasalan.up.railway.app/',
+  URL: 'http://portfolioapcejasalanaws-env.eba-g2zhhait.us-east-1.elasticbeanstalk.com/'
 };
