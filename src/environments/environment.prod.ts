@@ -11,5 +11,5 @@ export const environment = {
   },
   production: true,
 
-  URL: 'http://portfolioapcejasalanaws-env.eba-g2zhhait.us-east-1.elasticbeanstalk.com/'
+  URL: 'https://portfolioap-alandcejas01.koyeb.app/'
 };

@@ -17,7 +17,7 @@ export const environment = {
 
   //URL: 'http://localhost:8080/',
   //URL: 'https://backendportfolioapcejasalan.up.railway.app/',
-  URL: 'http://portfolioapcejasalanaws-env.eba-g2zhhait.us-east-1.elasticbeanstalk.com/'
+  URL: 'https://portfolioap-alandcejas01.koyeb.app/'
 };
 
 /*
